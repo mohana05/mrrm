@@ -106,9 +106,9 @@ const privacyPoints = [
 ];
 
 const freeTier = [
-  "All 10 core activities",
+  "3 core activities",
   "Numbers 1-20",
-  "English language",
+  "All 3 languages",
   "Basic sticker rewards",
   "Progress tracking",
 ];
@@ -117,8 +117,8 @@ const CTA_APP_STORE =
   "https://apps.apple.com/us/app/numbee-learning/id6754674187";
 
 const premiumTier = [
+  "All 10 activities",
   "Numbers 1-100",
-  "All 3 languages",
   "Speech Practice unlocked",
   "100+ premium stickers",
   "No advertisements ever",
