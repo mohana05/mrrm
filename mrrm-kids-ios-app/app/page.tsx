@@ -125,6 +125,34 @@ const premiumTier = [
   "Future updates included",
 ];
 
+const faqItems = [
+  {
+    question: "Which activities are free and which require Premium?",
+    answer:
+      "The free download includes three core activities covering numbers 1-20 in all three languages. Premium unlocks all 10 activities, numbers 1-100, speech practice, and 100+ stickers.",
+  },
+  {
+    question: "Does NumBee work offline and stay ad-free?",
+    answer:
+      "Yes. After the initial download, every activity runs fully offline and no third-party ads or trackers are included, making it safe for kids.",
+  },
+  {
+    question: "Which languages are supported?",
+    answer:
+      "NumBee guides children in English, Spanish, and Hindi across both free and premium tiers so bilingual families can practice together.",
+  },
+  {
+    question: "Can parents track progress for multiple kids?",
+    answer:
+      "Built-in progress dashboards show completed activities, skill streaks, and sticker collections so parents or educators can monitor each learner.",
+  },
+  {
+    question: "Is speech recognition stored anywhere?",
+    answer:
+      "Speech Practice is processed on-device only. Audio is never saved, transmitted, or collected—once feedback is delivered, the audio is discarded.",
+  },
+];
+
 export default function Home() {
   return (
     <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-24 pt-12 sm:px-6 lg:px-8 lg:pt-16">
@@ -139,6 +167,7 @@ export default function Home() {
         <LanguagesBanner />
         <SpeechHighlight />
         <ParentFriendly />
+        <FAQSection />
         <PrivacySupport />
         <Footer />
       </section>
@@ -712,6 +741,55 @@ function ParentFriendly() {
           ))}
         </ul>
       </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <section className="space-y-6 rounded-[2.5rem] border border-slate-100 bg-white/80 p-6 shadow-lg shadow-amber-50">
+      <div className="text-center">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-500">
+          FAQ
+        </p>
+        <h2 className="mt-2 text-3xl font-semibold text-slate-900">
+          Answers for parents, educators, and app reviewers.
+        </h2>
+        <p className="mt-4 text-lg text-slate-600">
+          Everything you need to know about pricing, privacy, offline access,
+          and speech recognition.
+        </p>
+      </div>
+      <div className="space-y-4">
+        {faqItems.map((item) => (
+          <details
+            key={item.question}
+            className="rounded-3xl border border-slate-100 bg-white/90 p-4 shadow-sm shadow-amber-50"
+          >
+            <summary className="cursor-pointer text-lg font-semibold text-slate-900">
+              {item.question}
+            </summary>
+            <p className="mt-2 text-slate-600">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </section>
   );
 }

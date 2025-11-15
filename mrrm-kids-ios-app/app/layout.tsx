@@ -8,19 +8,34 @@ const fredoka = Fredoka({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl = "https://www.numbeelearning.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.numbeelearning.com"),
-  title: "NumBee Learning | mrrm",
+  metadataBase: new URL(siteUrl),
+  title: "NumBee Learning Math App | MRRM Kids Learning Studio",
   description:
-    "NumBee Learning makes math fun for kids ages 3-8 with 10+ interactive counting, speech, and pattern activities designed by educators.",
+    "Discover NumBee Learning by MRRM: a speech-enabled math app for kids ages 4-8 with counting, patterns, skip counting, and multi-language support on iPhone and iPad.",
+  keywords: [
+    "NumBee Learning",
+    "MRRM",
+    "kids math app",
+    "speech practice numbers",
+    "skip counting iPad",
+    "multi language math games",
+    "educational apps for kids",
+  ],
+  alternates: {
+    canonical: siteUrl,
+  },
   icons: {
     icon: "/favicon.ico",
   },
   openGraph: {
-    title: "NumBee Learning",
+    type: "website",
+    title: "NumBee Learning · Speech-enabled Math for Kids",
     description:
-      "Interactive math adventures for children ages 3-8. Counting, speech practice, progress tracking, and multi-language support.",
-    url: "https://www.numbeelearning.com",
+      "Help children master numbers with joyful counting, pattern, and speech activities in English, Spanish, and Hindi.",
+    url: siteUrl,
     siteName: "NumBee Learning",
     images: [
       {
@@ -33,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "NumBee Learning",
+    title: "NumBee Learning · MRRM",
     description:
-      "Help your child master numbers with joyful, kid-safe practice activities.",
+      "Interactive math adventures with speech practice, progress tracking, and multilingual support.",
     images: ["/Images/home.png"],
   },
 };
@@ -45,6 +60,48 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "MRRM",
+      url: siteUrl,
+      logo: `${siteUrl}/Images/mrrm-logo.png`,
+      sameAs: [
+        "https://apps.apple.com/us/app/numbee-learning/id6754674187",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "mrrmfamily2022@gmail.com",
+        contactType: "customer support",
+        availableLanguage: ["English", "Spanish", "Hindi"],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      name: "NumBee Learning",
+      operatingSystem: "iOS/iPadOS",
+      applicationCategory: "EducationalApplication",
+      offers: {
+        "@type": "Offer",
+        price: "6.99",
+        priceCurrency: "USD",
+        description: "One-time premium unlock for NumBee Learning",
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5",
+        reviewCount: "3",
+      },
+      installUrl: "https://apps.apple.com/us/app/numbee-learning/id6754674187",
+      publisher: {
+        "@type": "Organization",
+        name: "MRRM",
+      },
+    },
+  ];
+
   return (
     <html lang="en">
       <body
@@ -53,6 +110,10 @@ export default function RootLayout({
         <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#fde68a,_transparent_55%)]">
           {children}
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </body>
     </html>
   );
