@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://www.numbeelearning.com";
+const siteUrl = "https://mrrm-mobile-apps.netlify.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

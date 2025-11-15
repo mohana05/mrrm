@@ -8,7 +8,7 @@ const fredoka = Fredoka({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteUrl = "https://www.numbeelearning.com";
+const siteUrl = "https://mrrm-mobile-apps.netlify.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

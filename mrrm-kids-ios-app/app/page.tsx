@@ -108,7 +108,7 @@ const privacyPoints = [
 const freeTier = [
   "3 core activities",
   "Numbers 1-20",
-  "All 3 languages",
+  "All 3 languages (English, Español, हिंदी)",
   "Basic sticker rewards",
   "Progress tracking",
 ];
@@ -557,6 +557,12 @@ function FreeVsPremium() {
         <h2 className="mt-2 text-3xl font-semibold text-slate-900">
           Unlock the full NumBee experience for only $6.99 (one-time).
         </h2>
+        <p className="mt-4 text-lg text-slate-600">
+          The free tier keeps three core activities and all three languages
+          (English, Spanish, Hindi) open to every family. Premium expands the
+          number range, unlocks Speech Practice, and adds 100+ rewards with no
+          ads or subscriptions.
+        </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         <TierCard title="Free Version" price="$0" items={freeTier} />
